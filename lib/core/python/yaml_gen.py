@@ -1,19 +1,31 @@
 import yaml
+import sys
 
-def load_env():
-    try:
-        with open('app.env', "r") as f:
-            env_vars = {}
-            for line in f:
-                line = # The code snippet `line.strip()` is used to remove any leading or trailing
-                # whitespaces from the `line` read from the file.
-                line.strip()
-                if line and not line.startswith("#"):
-                    key, value = line.split("=", 1)
-                    env_vars[key.strip()] = value.strip()
-            return env_vars
-    except FileNotFoundError:
-        print(f"Error: File '{env_file}' not found.")
+def process_file(file_path):
+    # Your code to process the file goes here
+    print("Processing file:", file_path)
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python script.py <file_path>")
+        sys.exit(1)
+    file_path = sys.argv[1]
+    process_file(file_path)
+    
+# def load_env():
+#     try:
+#         with open('app.env', "r") as f:
+#             env_vars = {}
+#             for line in f:
+#                 line = # The code snippet `line.strip()` is used to remove any leading or trailing
+#                 # whitespaces from the `line` read from the file.
+#                 line.strip()
+#                 if line and not line.startswith("#"):
+#                     key, value = line.split("=", 1)
+#                     env_vars[key.strip()] = value.strip()
+#             return env_vars
+#     except FileNotFoundError:
+#         print(f"Error: File '{env_file}' not found.")
 
 def generate_yaml(env_vars):
     yaml_structure = {
